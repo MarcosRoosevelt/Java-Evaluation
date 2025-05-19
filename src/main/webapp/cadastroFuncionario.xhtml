@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Cadastro de Funcionário</title>
+</h:head>
+<h:body>
+    <h:form id="formCadastroFuncionario">
+
+        <p:panel header="Cadastro de Funcionário" style="width: 500px; margin: 0 auto;">
+            <p:messages id="msgs" autoUpdate="true" showDetail="true" />
+
+            <p:outputLabel for="nome" value="Nome:" />
+            <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" label="Nome" />
+            
+            <p:outputLabel for="password" value="Senha:" />
+            <p:password id="password" value="#{funcionarioBean.funcionario.senha}" placeholder="Senha" required="true" label="Senha" />
+
+            <p:outputLabel for="cpf" value="CPF:" />
+            <p:inputMask id="cpf" value="#{funcionarioBean.funcionario.cpf}" mask="999.999.999-99" required="true" label="CPF" />
+
+            <p:outputLabel for="cargo" value="Cargo:" />
+            <p:inputText id="cargo" value="#{funcionarioBean.funcionario.cargo}" required="true" label="Cargo" />
+
+            <p:outputLabel for="salario_base" value="Salário Bruto:" />
+            <p:inputNumber id="salario_base" value="#{funcionarioBean.funcionario.salario_base}" required="true" label="Salário" />
+
+            <p:commandButton value="Salvar" action="#{funcionarioBean.salvar}" icon="pi pi-save" update="formCadastroFuncionario" style="margin-top: 10px;" />
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

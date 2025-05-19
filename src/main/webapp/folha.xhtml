@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Cadastro de Folha de Pagamento</title>
+</h:head>
+<h:body>
+    <h:form id="formFolha">
+        <p:panel header="Cadastro de Folha de Pagamento" style="width: 600px; margin: 0 auto;">
+            <p:messages autoUpdate="true" />
+
+            <p:outputLabel for="funcionario" value="Funcionário:" />
+            <p:selectOneMenu id="funcionario" value="#{folhaPagamentoBean.folha.funcionarioId}" required="true" style="width: 100%;">
+                <f:selectItem itemLabel="Selecione..." itemValue="" />
+                <f:selectItems value="#{folhaPagamentoBean.funcionarios}" var="f" itemLabel="#{f.nome} (#{f.cpf})" itemValue="#{f.id}" />
+            </p:selectOneMenu>
+
+            <p:outputLabel for="proventos" value="Proventos:" />
+            <p:inputNumber id="proventos" value="#{folhaPagamentoBean.folha.proventos}" required="true" />
+
+            <p:outputLabel for="descontos" value="Descontos:" />
+            <p:inputNumber id="descontos" value="#{folhaPagamentoBean.folha.descontos}" required="true" />
+
+            <p:commandButton value="Salvar Folha" action="#{folhaPagamentoBean.salvar}" update="@form" icon="pi pi-save" style="margin-top: 10px;" />
+            
+            <p:commandButton value="Cacular IRRF" action="#{folhaPagamentoBean.calcularIRRF}" update="@form" icon="pi pi-calculator" style="margin-left: 10px; margin-top: 10px;"
+                             <p:outputLabel value="IRRF calculado: R$#{folhaPagamentoBean.irrfCalculado}" style="display:block; margin-top: 10px;"
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
